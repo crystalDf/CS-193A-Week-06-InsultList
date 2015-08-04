@@ -48,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        if (mTextToSpeech != null) {
+            mTextToSpeech.stop();
+            mTextToSpeech.shutdown();
+        }
+        super.onDestroy();
+    }
+
     private void handleClick(int position) {
         String line = mLines.get(position);
 
